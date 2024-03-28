@@ -1,10 +1,9 @@
 {
   "name": "nestjs-api-prop-helpers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && npm run build:ts",
@@ -20,6 +19,24 @@
   "devDependencies": {
     "typescript": "^5.4.3"
   },
-  "author": "Ihor Herasymovych",
-  "license": "ISC"
+  "author": {
+    "name": "Ihor Herasymovych",
+    "email": "me@mgorunuch.pro",
+    "url": "https://mgorunuch.pro"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/mgorunuch/nestjs-api-prop-helpers#readme",
+  "repository": {
+    "url": "https://github.com/mgorunuch/nestjs-api-prop-helpers"
+  },
+  "bugs": {
+    "url": "https://github.com/mgorunuch/nestjs-api-prop-helpers/issues"
+  },
+  "keywords": [
+    "nestjs",
+    "swagger",
+    "api",
+    "prop",
+    "helpers"
+  ]
 }
