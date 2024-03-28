@@ -43,13 +43,6 @@ export const Formats = {
   IpV6: 'ipv6',
 };
 
-// Better name
-const format = <Format>(format: Format) => ({ format });
-
-const typeFormat = <Type, Format>(type: Type, format: Format) => ({ type, format });
-const numFormat = <Format>(format: Format) => typeFormat(Types.Number, format);
-const intFormat = <Format>(format: Format) => typeFormat(Types.Integer, format);
-
 export const Config = {
   Enum: <T>(v: T) => ({ enum: v }),
 } as const;
@@ -126,13 +119,13 @@ export interface Globals {
   NotRequired: this;
 }
 
-interface NumberApiPropsInterface extends Globals, AllNumbersGlobalFields {}
+export interface NumberApiPropsInterface extends Globals, AllNumbersGlobalFields {}
 
-interface StrApiPropsInterface extends Globals, AllStringsGlobalFields {}
+export interface StrApiPropsInterface extends Globals, AllStringsGlobalFields {}
 
-interface BoolApiPropsInterface extends Globals, AllBooleansGlobalFields {}
+export interface BoolApiPropsInterface extends Globals, AllBooleansGlobalFields {}
 
-class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface, BoolApiPropsInterface {
+export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface, BoolApiPropsInterface {
   constructor(private config: Options) {}
 
   private ap(conf?: Partial<Options>) {
