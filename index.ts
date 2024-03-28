@@ -140,9 +140,10 @@ export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface
   // https://swagger.io/docs/specification/data-models/data-types/
 
   // Globals
-  public Type(type: Options['type']) {return this.ap({ type })}
-  public Format(format: Options['format']) {return this.ap({ format })}
-  public Description(description: string) {return this.ap({ description })}
+  Type(type: Options['type']) {return this.ap({ type })}
+  Format(format: Options['format']) {return this.ap({ format })}
+  Description(description: string) {return this.ap({ description })}
+  Title(title: string) {return this.ap({ title })}
   get IsArray() {return this.ap(Globals.Array)}
   get IsNotArray() {return this.ap(Globals.NotArray)}
   get Null() {return this.ap(Globals.Nullable)}
@@ -163,15 +164,15 @@ export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface
   protected setMin(minimum?: number, exclusiveMinimum?: boolean) {
     return this.ap({ minimum, exclusiveMinimum })
   }
-  public Min(min: number, exclusive: boolean = false) {return this.Number.setMin(min, exclusive)}
-  public resetMin() {return this.setMin()}
+  Min(min: number, exclusive: boolean = false) {return this.Number.setMin(min, exclusive)}
+  resetMin() {return this.setMin()}
 
   // exclusiveMaximum: false or not included	value ≤ maximum
   protected setMax(maximum?: number, exclusiveMaximum?: boolean) {
     return this.ap({ maximum, exclusiveMaximum })
   }
-  public Max(max: number, exclusive: boolean = false) {return this.Number.setMax(max, exclusive)}
-  public resetMax() {return this.setMax()}
+  Max(max: number, exclusive: boolean = false) {return this.Number.setMax(max, exclusive)}
+  resetMax() {return this.setMax()}
 
   // Must be more than 0
   MultipleOf(multipleOf: number) {
@@ -202,5 +203,11 @@ export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface
 }
 
 export function ApiProp(title: string) {
-  return new ApiPropCls({ title });
+  return Api().Title(title);
 }
+
+export function Api(config?: ApiPropertyOptions) {
+  return new ApiPropCls(config || {});
+}
+
+
