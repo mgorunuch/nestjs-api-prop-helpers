@@ -1,6 +1,6 @@
 {
   "name": "nestjs-api-prop-helpers",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
