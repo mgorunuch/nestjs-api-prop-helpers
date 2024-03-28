@@ -126,9 +126,9 @@ export interface StrApiPropsInterface extends Globals, AllStringsGlobalFields {}
 export interface BoolApiPropsInterface extends Globals, AllBooleansGlobalFields {}
 
 export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface, BoolApiPropsInterface {
-  constructor(private config: Options) {}
+  constructor(protected config: Options) {}
 
-  private ap(conf?: Partial<Options>) {
+  protected ap(conf?: Partial<Options>) {
     this.config = merge(this.config, conf);
     return this;
   }
@@ -160,14 +160,14 @@ export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface
   get Int64() {return this.Integer.Format(Formats.Int64)}
 
   // exclusiveMinimum: false or not included	value ≥ minimum
-  private setMin(minimum?: number, exclusiveMinimum?: boolean) {
+  protected setMin(minimum?: number, exclusiveMinimum?: boolean) {
     return this.ap({ minimum, exclusiveMinimum })
   }
   public Min(min: number, exclusive: boolean = false) {return this.Number.setMin(min, exclusive)}
   public resetMin() {return this.setMin()}
 
   // exclusiveMaximum: false or not included	value ≤ maximum
-  private setMax(maximum?: number, exclusiveMaximum?: boolean) {
+  protected setMax(maximum?: number, exclusiveMaximum?: boolean) {
     return this.ap({ maximum, exclusiveMaximum })
   }
   public Max(max: number, exclusive: boolean = false) {return this.Number.setMax(max, exclusive)}
@@ -183,7 +183,7 @@ export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface
 
   // --- Strings
   get String() {return this.Type(Types.String)}
-  private strFormat(format: Options['format']) {return this.String.Format(format)}
+  protected strFormat(format: Options['format']) {return this.String.Format(format)}
   get Date() {return this.strFormat(Formats.Date)}
   get DateTime() {return this.strFormat(Formats.DateTime)}
   get Password()  {return this.strFormat(Formats.Password)}
