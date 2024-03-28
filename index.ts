@@ -144,6 +144,7 @@ export class ApiPropCls implements NumberApiPropsInterface, StrApiPropsInterface
   Format(format: Options['format']) {return this.ap({ format })}
   Description(description: string) {return this.ap({ description })}
   Title(title: string) {return this.ap({ title })}
+  Enum(v: ApiPropertyOptions['enum']) {return this.ap(Config.Enum(v))}
   get IsArray() {return this.ap(Globals.Array)}
   get IsNotArray() {return this.ap(Globals.NotArray)}
   get Null() {return this.ap(Globals.Nullable)}
